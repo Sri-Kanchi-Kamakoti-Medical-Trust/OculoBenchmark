@@ -11,7 +11,7 @@ and three domain-specific foundation models.
   Three additional rare labels (PVD, CD, Phthisis) are released but excluded
   from evaluation.
 
-<p align="center"><img src="assets/sample_images_combined.png" width="90%"/></p>
+<p align="center"><img src="assets/sample_images.png" width="100%"/></p>
 <p align="center"><em>Representative B-scan images for each annotated abnormality.</em></p>
 
 ---
@@ -32,14 +32,13 @@ CNNs train at 512x512; ViT-B-16 and the foundation models at 224x224.
 ```
 .
 ├── data.csv                 # image_id + 8 binary labels + diagnosis (1,630 rows)
-├── splits/                  # fixed, patient-disjoint 75/10/15 split
+├── splits/                  # fixed train/val/test split (CSVs)
 │   ├── train.csv  val.csv  test.csv
 ├── src/
 │   ├── train.py             # single training entry point (all models/settings)
 │   ├── dataset.py           # multi-label B-scan dataset + transforms
 │   ├── losses.py            # focal / BCE / asymmetric loss
 │   ├── foundation_models.py # USFM / VisionFM / OpenUS loaders
-│   ├── create_splits.py     # regenerate the patient-disjoint split
 │   ├── preprocess.py        # crop + resize released images for training
 │   ├── aggregate_seeds.py   # per-seed metrics -> mean +/- std
 │   └── figures/             # paper figure scripts (Fig 2, Fig 3)
