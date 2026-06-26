@@ -66,7 +66,7 @@
     .publication-links .link-block { margin: 0; }
     .content a { color: #2563eb; text-decoration: underline; }
     .content a:hover { color: #1d4ed8; }
-    table.tight td, table.tight th { padding: 0.35rem 0.7rem; }
+    table.tight td, table.tight th { padding: 0.35rem 0.7rem; text-align: center; vertical-align: middle; }
   </style>
 </head>
 <body>
@@ -157,19 +157,20 @@
       </p>
       <table class="table is-fullwidth is-striped tight">
         <thead>
-          <tr><th>Label</th><th>Abbr.</th><th class="has-text-right">Positives</th><th class="has-text-centered">Evaluated</th></tr>
+          <tr><th>Label</th><th>Count</th></tr>
         </thead>
         <tbody>
-          <tr><td>Vitreous Dot Echo</td><td>VDE</td><td class="has-text-right">508</td><td class="has-text-centered">&#10003;</td></tr>
-          <tr><td>Membranous Echo</td><td>ME</td><td class="has-text-right">339</td><td class="has-text-centered">&#10003;</td></tr>
-          <tr><td>Retinal Detachment</td><td>RD</td><td class="has-text-right">186</td><td class="has-text-centered">&#10003;</td></tr>
-          <tr><td>Mass Lesion</td><td>ML</td><td class="has-text-right">115</td><td class="has-text-centered">&#10003;</td></tr>
-          <tr><td>Abnormal Contour</td><td>AC</td><td class="has-text-right">92</td><td class="has-text-centered">&#10003;</td></tr>
-          <tr><td>Posterior Vitreous Detachment</td><td>PVD</td><td class="has-text-right">17</td><td class="has-text-centered">rare</td></tr>
-          <tr><td>Choroidal Detachment</td><td>CD</td><td class="has-text-right">29</td><td class="has-text-centered">rare</td></tr>
-          <tr><td>Phthisis Bulbi</td><td>PB</td><td class="has-text-right">19</td><td class="has-text-centered">rare</td></tr>
+          <tr><td>Vitreous Dot Echo (VDE)</td><td>508</td></tr>
+          <tr><td>Membranous Echo (ME)</td><td>339</td></tr>
+          <tr><td>Retinal Detachment (RD)</td><td>186</td></tr>
+          <tr><td>Mass Lesion (ML)</td><td>115</td></tr>
+          <tr><td>Abnormal Contour (AC)</td><td>92</td></tr>
+          <tr><td>Posterior Vitreous Detachment (PVD)*</td><td>17</td></tr>
+          <tr><td>Choroidal Detachment (CD)*</td><td>29</td></tr>
+          <tr><td>Phthisis Bulbi (PB)*</td><td>19</td></tr>
         </tbody>
       </table>
+      <p style="font-size:0.85rem; color:#555; margin-top:-0.5rem;">*Excluded from our evaluation experiments owing to their low prevalence.</p>
       <p>
         All released images are anonymized, with patient identifiers removed. Informed consent was obtained from all
         patients, and the study protocol was approved by the institutional review board. A fixed train/validation/test
@@ -195,17 +196,17 @@
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-narrow tight" style="font-size:0.88rem;">
           <thead>
-            <tr><th>Model</th><th>Setting</th><th class="has-text-right">Acc.</th><th class="has-text-right">Prec.</th><th class="has-text-right">Rec.</th><th class="has-text-right">Spec.</th><th class="has-text-right">F1</th><th class="has-text-right">AUROC</th></tr>
+            <tr><th>Model</th><th>Setting</th><th>Acc.</th><th>Prec.</th><th>Rec.</th><th>Spec.</th><th>F1</th><th>AUROC</th></tr>
           </thead>
           <tbody>
-            <tr><td rowspan="2">EfficientNet-B0</td><td>Single-task</td><td class="has-text-right">95.2</td><td class="has-text-right">96.2</td><td class="has-text-right">88.6</td><td class="has-text-right">98.4</td><td class="has-text-right"><strong>0.92</strong></td><td class="has-text-right">0.98</td></tr>
-            <tr><td>Multi-task</td><td class="has-text-right">93.2</td><td class="has-text-right">80.4</td><td class="has-text-right">74.8</td><td class="has-text-right">96.8</td><td class="has-text-right">0.77</td><td class="has-text-right">0.96</td></tr>
-            <tr><td rowspan="2">ResNet50</td><td>Single-task</td><td class="has-text-right">94.2</td><td class="has-text-right">86.7</td><td class="has-text-right">78.8</td><td class="has-text-right">97.8</td><td class="has-text-right">0.83</td><td class="has-text-right">0.94</td></tr>
-            <tr><td>Multi-task</td><td class="has-text-right">89.8</td><td class="has-text-right">59.4</td><td class="has-text-right">72.3</td><td class="has-text-right">95.8</td><td class="has-text-right">0.65</td><td class="has-text-right">0.90</td></tr>
-            <tr><td rowspan="2">VGG-19-BN</td><td>Single-task</td><td class="has-text-right">97.3</td><td class="has-text-right">90.6</td><td class="has-text-right">81.4</td><td class="has-text-right">98.0</td><td class="has-text-right">0.86</td><td class="has-text-right">0.98</td></tr>
-            <tr><td>Multi-task</td><td class="has-text-right">90.4</td><td class="has-text-right">77.0</td><td class="has-text-right">67.8</td><td class="has-text-right">96.6</td><td class="has-text-right">0.70</td><td class="has-text-right">0.93</td></tr>
-            <tr><td rowspan="2">ViT-B-16</td><td>Single-task</td><td class="has-text-right">90.7</td><td class="has-text-right">76.7</td><td class="has-text-right">52.9</td><td class="has-text-right">96.3</td><td class="has-text-right">0.61</td><td class="has-text-right">0.94</td></tr>
-            <tr><td>Multi-task</td><td class="has-text-right">92.9</td><td class="has-text-right">85.4</td><td class="has-text-right">72.9</td><td class="has-text-right">96.3</td><td class="has-text-right"><strong>0.78</strong></td><td class="has-text-right">0.95</td></tr>
+            <tr><td rowspan="2">EfficientNet-B0</td><td>Single-task</td><td>95.2</td><td>96.2</td><td>88.6</td><td>98.4</td><td><strong>0.92</strong></td><td>0.98</td></tr>
+            <tr><td>Multi-task</td><td>93.2</td><td>80.4</td><td>74.8</td><td>96.8</td><td>0.77</td><td>0.96</td></tr>
+            <tr><td rowspan="2">ResNet50</td><td>Single-task</td><td>94.2</td><td>86.7</td><td>78.8</td><td>97.8</td><td>0.83</td><td>0.94</td></tr>
+            <tr><td>Multi-task</td><td>89.8</td><td>59.4</td><td>72.3</td><td>95.8</td><td>0.65</td><td>0.90</td></tr>
+            <tr><td rowspan="2">VGG-19-BN</td><td>Single-task</td><td>97.3</td><td>90.6</td><td>81.4</td><td>98.2</td><td>0.86</td><td>0.98</td></tr>
+            <tr><td>Multi-task</td><td>90.4</td><td>77.0</td><td>67.8</td><td>96.6</td><td>0.70</td><td>0.93</td></tr>
+            <tr><td rowspan="2">ViT-B-16</td><td>Single-task</td><td>90.7</td><td>76.7</td><td>52.9</td><td>96.3</td><td>0.61</td><td>0.94</td></tr>
+            <tr><td>Multi-task</td><td>92.9</td><td>85.4</td><td>72.9</td><td>96.3</td><td><strong>0.78</strong></td><td>0.95</td></tr>
           </tbody>
         </table>
       </div>
@@ -215,42 +216,24 @@
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-narrow tight" style="font-size:0.88rem;">
           <thead>
-            <tr><th>Model</th><th>Strategy</th><th class="has-text-right">Acc.</th><th class="has-text-right">Prec.</th><th class="has-text-right">Rec.</th><th class="has-text-right">Spec.</th><th class="has-text-right">F1</th><th class="has-text-right">AUROC</th></tr>
+            <tr><th>Model</th><th>Strategy</th><th>Acc.</th><th>Prec.</th><th>Rec.</th><th>Spec.</th><th>F1</th><th>AUROC</th></tr>
           </thead>
           <tbody>
-            <tr><td rowspan="3">OpenUS</td><td>Full FT</td><td class="has-text-right">87.7</td><td class="has-text-right">73.5</td><td class="has-text-right">39.3</td><td class="has-text-right">94.4</td><td class="has-text-right">0.46</td><td class="has-text-right">0.77</td></tr>
-            <tr><td>Linear Probe</td><td class="has-text-right">92.1</td><td class="has-text-right">83.1</td><td class="has-text-right">62.0</td><td class="has-text-right">96.3</td><td class="has-text-right">0.69</td><td class="has-text-right">0.93</td></tr>
-            <tr><td>LP &rarr; FT</td><td class="has-text-right">91.1</td><td class="has-text-right">76.6</td><td class="has-text-right">62.1</td><td class="has-text-right">94.1</td><td class="has-text-right">0.66</td><td class="has-text-right">0.91</td></tr>
-            <tr><td rowspan="3">USFM</td><td>Full FT</td><td class="has-text-right">91.8</td><td class="has-text-right">83.4</td><td class="has-text-right">70.0</td><td class="has-text-right">96.2</td><td class="has-text-right">0.75</td><td class="has-text-right">0.93</td></tr>
-            <tr><td>Linear Probe</td><td class="has-text-right">92.2</td><td class="has-text-right">87.8</td><td class="has-text-right">70.6</td><td class="has-text-right">98.4</td><td class="has-text-right">0.76</td><td class="has-text-right">0.95</td></tr>
-            <tr><td>LP &rarr; FT</td><td class="has-text-right">90.4</td><td class="has-text-right">77.8</td><td class="has-text-right">66.8</td><td class="has-text-right">95.9</td><td class="has-text-right">0.71</td><td class="has-text-right">0.92</td></tr>
-            <tr><td rowspan="3">VisionFM</td><td>Full FT</td><td class="has-text-right">88.2</td><td class="has-text-right">73.5</td><td class="has-text-right">41.3</td><td class="has-text-right">97.3</td><td class="has-text-right">0.52</td><td class="has-text-right">0.90</td></tr>
-            <tr><td>Linear Probe</td><td class="has-text-right">92.9</td><td class="has-text-right">86.1</td><td class="has-text-right">70.2</td><td class="has-text-right">97.7</td><td class="has-text-right">0.76</td><td class="has-text-right">0.94</td></tr>
-            <tr><td>LP &rarr; FT</td><td class="has-text-right">91.4</td><td class="has-text-right">82.2</td><td class="has-text-right">67.5</td><td class="has-text-right">97.1</td><td class="has-text-right">0.73</td><td class="has-text-right">0.89</td></tr>
-            <tr><td rowspan="2">EfficientNet-B0</td><td>Full FT</td><td class="has-text-right">93.2</td><td class="has-text-right">80.4</td><td class="has-text-right">74.8</td><td class="has-text-right">96.8</td><td class="has-text-right"><strong>0.77</strong></td><td class="has-text-right">0.96</td></tr>
-            <tr><td>LP &rarr; FT</td><td class="has-text-right">91.3</td><td class="has-text-right">74.5</td><td class="has-text-right">65.5</td><td class="has-text-right">95.8</td><td class="has-text-right">0.69</td><td class="has-text-right">0.93</td></tr>
+            <tr><td rowspan="3">OpenUS</td><td>Full FT</td><td>87.7</td><td>73.5</td><td>39.3</td><td>94.4</td><td>0.46</td><td>0.77</td></tr>
+            <tr><td>Linear Probe</td><td>92.1</td><td>83.1</td><td>62.0</td><td>96.3</td><td>0.69</td><td>0.93</td></tr>
+            <tr><td>LP &rarr; FT</td><td>91.1</td><td>76.6</td><td>62.1</td><td>94.1</td><td>0.66</td><td>0.91</td></tr>
+            <tr><td rowspan="3">USFM</td><td>Full FT</td><td>91.8</td><td>83.4</td><td>70.0</td><td>96.2</td><td>0.75</td><td>0.93</td></tr>
+            <tr><td>Linear Probe</td><td>92.2</td><td>87.8</td><td>70.6</td><td>98.4</td><td>0.76</td><td>0.95</td></tr>
+            <tr><td>LP &rarr; FT</td><td>90.4</td><td>77.8</td><td>66.8</td><td>95.9</td><td>0.71</td><td>0.92</td></tr>
+            <tr><td rowspan="3">VisionFM</td><td>Full FT</td><td>88.2</td><td>73.5</td><td>41.3</td><td>97.3</td><td>0.52</td><td>0.90</td></tr>
+            <tr><td>Linear Probe</td><td>92.9</td><td>86.1</td><td>70.2</td><td>97.7</td><td>0.76</td><td>0.94</td></tr>
+            <tr><td>LP &rarr; FT</td><td>91.4</td><td>82.2</td><td>67.5</td><td>97.1</td><td>0.73</td><td>0.89</td></tr>
+            <tr><td rowspan="2">EfficientNet-B0</td><td>Full FT</td><td>93.2</td><td>80.4</td><td>74.8</td><td>96.8</td><td><strong>0.77</strong></td><td>0.96</td></tr>
+            <tr><td>LP &rarr; FT</td><td>91.3</td><td>74.5</td><td>65.5</td><td>95.8</td><td>0.69</td><td>0.93</td></tr>
           </tbody>
         </table>
       </div>
       <p class="fig-caption">EfficientNet-B0 is included as the best dedicated backbone baseline. Best F1 in <strong>bold</strong>.</p>
-
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="fig">
-            <img src="static/images/efficientnet_f1_bar.png" alt="EfficientNet-B0 per-label F1"/>
-          </div>
-        </div>
-        <div class="column">
-          <div class="fig">
-            <img src="static/images/ViT_f1_bar.png" alt="ViT-B-16 per-label F1"/>
-          </div>
-        </div>
-      </div>
-      <p class="fig-caption">Per-label F1 for EfficientNet-B0 (left) and ViT-B-16 (right), single-task vs multi-task.</p>
-      <div class="fig" style="margin-top:1.4rem;">
-        <img src="static/images/fm_comparison_f1.png" alt="Foundation models vs EfficientNet-B0 per-label F1"/>
-        <p class="fig-caption">Foundation-model linear probes vs EfficientNet-B0 (full fine-tuning), per label.</p>
-      </div>
     </div>
   </section>
 
